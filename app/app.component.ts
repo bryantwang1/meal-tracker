@@ -29,7 +29,7 @@ export class AppComponent {
 
   testList: Food[] = [];
 
-  sortFunction(a,b){
+  sortByDate(a,b){
     var dateA = a.dateEaten.getTime();
     var dateB = b.dateEaten.getTime();
     return dateA > dateB ? 1 : -1;
@@ -37,7 +37,7 @@ export class AppComponent {
 
   addFood(foodToAdd: Food) {
     this.masterFoodList.push(foodToAdd);
-    this.masterFoodList.sort(this.sortFunction);
+    this.masterFoodList.sort(this.sortByDate);
   }
 
   editFood(clickedFood) {
