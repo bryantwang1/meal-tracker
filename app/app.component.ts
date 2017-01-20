@@ -7,32 +7,19 @@ import { Food } from './food.model';
   <div class="container">
     <h1>Meal Tracker</h1>
     <button (click)="showAddForm()">Add a Keg</button>
-    <food-list [childFoodList]="masterFoodList"></food-list>
+    <food-list [childFoodList]="masterFoodList" (clickSender)="editFood($event)"></food-list>
     <hr>
     <div>
-      <div *ngIf = "selectedKeg">
-        <h3>Edit Keg: {{selectedKeg.name}}</h3>
-        <label>Keg Name:</label>
-        <input [(ngModel)]="selectedKeg.name"><br>
-        <label>Keg Brand:</label>
-        <input [(ngModel)]="selectedKeg.brand"><br>
-        <label>Keg Price(in cents):</label>
-        <input [(ngModel)]="selectedKeg.price" type="number"><br>
-        <label>Keg Alcohol Content(in percent):</label>
-        <input [(ngModel)]="selectedKeg.alcoholContent" type="number"><br>
-        <button (click)="finishedEditing()">Done</button>
-      </div>
-      <div *ngIf = "newKeg">
-        <h3>Add a Keg</h3>
-        <label>Keg Name:</label>
-        <input [(ngModel)]="newKeg.name"><br>
-        <label>Keg Brand:</label>
-        <input [(ngModel)]="newKeg.brand"><br>
-        <label>Keg Price(in cents):</label>
-        <input [(ngModel)]="newKeg.price" type="number"><br>
-        <label>Keg Alcohol Content(in percent):</label>
-        <input [(ngModel)]="newKeg.alcoholContent" type="number"><br>
-        <button (click)="addKeg()">Add this keg</button>
+      <edit-food [childSelectedFood]="selectedFood" (doneButtonClickedSender)="finishedEditing()"></edit-food>
+      <div *ngIf = "newFood">
+        <h3>Add a Food</h3>
+        <label>Food Name:</label>
+        <input [(ngModel)]="newFood.name"><br>
+        <label>Food Brand:</label>
+        <input [(ngModel)]="newFood.brand"><br>
+        <label>Food Price(in cents):</label>
+        <input [(ngModel)]="newFood.price" type="number"><br>
+        <button (click)="addFood()">Add this keg</button>
       </div>
     </div>
   </div>
@@ -49,20 +36,20 @@ export class AppComponent {
   selectedFood = null;
   newFood = null;
 
-  // addKeg() {
-  //   this.kegs.push(this.newKeg);
-  //   this.newKeg = null;
+  // addFood() {
+  //   this.kegs.push(this.newFood);
+  //   this.newFood = null;
   // }
 
-  // editKeg(clickedKeg) {
-  //   this.selectedKeg = clickedKeg;
-  // }
-  //
-  // finishedEditing() {
-  //   this.selectedKeg = null;
-  // }
+  editFood(clickedFood) {
+    this.selectedFood = clickedFood;
+  }
+
+  finishedEditing() {
+    this.selectedFood = null;
+  }
 
   // showAddForm() {
-  //   this.newKeg = new Keg('', '', 0, 0);
+  //   this.newFood = new Food('', '', 0, 0);
   // }
 }
