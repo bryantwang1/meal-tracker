@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Keg } from './food.model';
+import { Food } from './food.model';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,7 @@ import { Keg } from './food.model';
   <div class="container">
     <h1>Meal Tracker</h1>
     <button (click)="showAddForm()">Add a Keg</button>
-    <food-list></food-list>
+    <food-list [childFoodList]="masterFoodList"></food-list>
     <hr>
     <div>
       <div *ngIf = "selectedKeg">
@@ -41,23 +41,28 @@ import { Keg } from './food.model';
 
 export class AppComponent {
 
-  selectedKeg = null;
-  newKeg = null;
+  masterFoodList: Food[] = [
+    new Food('Cheeseburger', 'Burgers need cheese.', 520),
+    new Food('Mac and Cheese', 'Could\'ve used more cheese', 600),
+    new Food('New England Clam Chowder', 'Could\'ve used cheese', 400)
+  ];
+  selectedFood = null;
+  newFood = null;
 
   // addKeg() {
   //   this.kegs.push(this.newKeg);
   //   this.newKeg = null;
   // }
 
-  editKeg(clickedKeg) {
-    this.selectedKeg = clickedKeg;
-  }
+  // editKeg(clickedKeg) {
+  //   this.selectedKeg = clickedKeg;
+  // }
+  //
+  // finishedEditing() {
+  //   this.selectedKeg = null;
+  // }
 
-  finishedEditing() {
-    this.selectedKeg = null;
-  }
-
-  showAddForm() {
-    this.newKeg = new Keg('', '', 0, 0);
-  }
+  // showAddForm() {
+  //   this.newKeg = new Keg('', '', 0, 0);
+  // }
 }
