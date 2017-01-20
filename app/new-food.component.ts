@@ -28,7 +28,7 @@ export class NewFoodComponent {
     this.showForm = true;
   }
 
-  submitForm(name: string, description: string, calories: number, dateEaten: string) {
+  submitForm(name: string, description: string, calories: string, dateEaten: string) {
     var newFoodToAdd: Food = new Food(name, description, calories, dateEaten);
     this.showForm = false;
     this.newFoodSender.emit(newFoodToAdd);
