@@ -7,8 +7,6 @@ import { Keg } from './food.model';
   <div class="container">
     <h1>Meal Tracker</h1>
     <button (click)="showAddForm()">Add a Keg</button>
-    <button (click)="colorByPrice()">Color by Price</button>
-    <button (click)="colorByAlcohol()">Color by Alcohol Content</button>
     <food-list></food-list>
     <hr>
     <div>
@@ -46,23 +44,10 @@ export class AppComponent {
   selectedKeg = null;
   newKeg = null;
 
-
-
-
-  colorByPrice() {
-    this.colorCode = "price";
-  }
-
-  colorByAlcohol() {
-    this.colorCode = "alcohol";
-  }
-
-
-
-  addKeg() {
-    this.kegs.push(this.newKeg);
-    this.newKeg = null;
-  }
+  // addKeg() {
+  //   this.kegs.push(this.newKeg);
+  //   this.newKeg = null;
+  // }
 
   editKeg(clickedKeg) {
     this.selectedKeg = clickedKeg;
