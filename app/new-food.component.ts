@@ -13,7 +13,9 @@ import { Food } from './food.model';
     <input #newDescription><br>
     <label>Food Calories:</label>
     <input #newCalories type="number"><br>
-    <button (click)="submitForm(newName.value, newDescription.value, newCalories.value); newName.value=''; newDescription.value=''; newCalories.value='';">Add This Food</button>
+    <label>Date Eaten(leave as default to set to today):</label>
+    <input #newDate type="date"><br>
+    <button (click)="submitForm(newName.value, newDescription.value, newCalories.value, newDate.value); newName.value=''; newDescription.value=''; newCalories.value=''; newDate.value='';">Add This Food</button>
   </div>
   `
 })
@@ -26,8 +28,8 @@ export class NewFoodComponent {
     this.showForm = true;
   }
 
-  submitForm(name: string, description: string, calories: number) {
-    var newFoodToAdd: Food = new Food(name, description, calories);
+  submitForm(name: string, description: string, calories: number, dateEaten: string) {
+    var newFoodToAdd: Food = new Food(name, description, calories, dateEaten);
     this.showForm = false;
     this.newFoodSender.emit(newFoodToAdd);
   }

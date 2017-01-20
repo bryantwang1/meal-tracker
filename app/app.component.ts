@@ -19,9 +19,9 @@ import { Food } from './food.model';
 export class AppComponent {
 
   masterFoodList: Food[] = [
-    new Food('Cheeseburger', 'Burgers need cheese.', 520),
-    new Food('Mac and Cheese', 'Could\'ve used more cheese', 600),
-    new Food('New England Clam Chowder', 'Could\'ve used cheese', 400)
+    new Food('Cheeseburger', 'Burgers need cheese.', 520, ''),
+    new Food('Mac and Cheese', 'Could\'ve used more cheese', 600, ''),
+    new Food('New England Clam Chowder', 'Could\'ve used cheese', 400, '')
   ];
   selectedFood: Food = null;
 

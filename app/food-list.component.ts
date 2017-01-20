@@ -16,6 +16,7 @@ import { Food } from './food.model';
     <li>Name: {{currentFood.name}}</li>
     <li>Details: {{currentFood.details}}</li>
     <li>Calories: {{currentFood.calories}}</li>
+    <li>Date Eaten: {{currentFood.dateEaten}}</li>
     <button (click)="editButtonClicked(currentFood)">Edit!</button>
     <div class="separator"></div>
   </div>
